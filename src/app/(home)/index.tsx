@@ -4,7 +4,7 @@ import Animated, {
   useSharedValue,
   useAnimatedStyle,
   interpolate,
-  Extrapolate,
+  Extrapolation,
   useAnimatedScrollHandler,
 } from 'react-native-reanimated';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -13,7 +13,7 @@ const { width } = Dimensions.get('window');
 const CARD_WIDTH = width * 0.8; // Width of each card
 const CARD_HEIGHT = 200; // Height of each card
 const CARD_SPACING = 10; // Reduced space between cards
-const CARDS = ['Card 1', 'Card 2', 'Card 3', 'Card 4', 'Card 5'];
+const CARDS = ['Coinbase', 'Metamask', 'Uniswap', 'Bitmap', 'Kraken'];
 
 type CardProps = {
   label: string;
@@ -62,15 +62,15 @@ const Card: React.FC<CardProps> = ({ label, index, scrollX }) => {
       scrollX.value,
       [offset - CARD_WIDTH, offset, offset + CARD_WIDTH],
       [0.8, 1, 0.8],
-      Extrapolate.CLAMP
+      Extrapolation.CLAMP
     );
 
     // Elevate the selected card (move it upwards) and lower the other cards
     const translateY = interpolate(
       scrollX.value,
       [offset - CARD_WIDTH, offset, offset + CARD_WIDTH],
-      [30, 0, 30], // Elevating selected card
-      Extrapolate.CLAMP
+      [20, 0, 20], // Elevating selected card
+      Extrapolation.CLAMP
     );
 
     // Determine if the card is selected (centered in the view)
@@ -81,14 +81,14 @@ const Card: React.FC<CardProps> = ({ label, index, scrollX }) => {
       scrollX.value,
       [offset - CARD_WIDTH, offset, offset + CARD_WIDTH],
       [0.6, 1, 0.6], // Dimming non-selected cards, brightening the selected one
-      Extrapolate.CLAMP
+      Extrapolation.CLAMP
     );
 
     const opacity = interpolate(
       scrollX.value,
       [offset - CARD_WIDTH, offset, offset + CARD_WIDTH],
       [0.5, 1, 0.5],
-      Extrapolate.CLAMP
+      Extrapolation.CLAMP
     );
 
     // Define background color (highlighting the selected card)
@@ -99,14 +99,14 @@ const Card: React.FC<CardProps> = ({ label, index, scrollX }) => {
       scrollX.value,
       [offset - CARD_WIDTH / 2, offset, offset + CARD_WIDTH / 2],
       [-width / 2 + CARD_WIDTH / 2, 0, width / 2 - CARD_WIDTH / 2],
-      Extrapolate.CLAMP
+      Extrapolation.CLAMP
     );
 
     // Apply zIndex to make the selected card appear on top
-    const zIndex = isSelected ? 1 : 0; // Selected card on top, others at the back
+    const zIndex = isSelected ? 10 : 0; // Increase zIndex significantly for the selected card
 
-    // Adjust translateX for the non-selected cards to be behind the selected card
-    const backCardTranslateX = isSelected ? 0 : translateX;
+    // For non-selected cards, move them farther back
+    const backCardTranslateX = isSelected ? 0 : translateX * 1.5; // Move non-selected cards further behind
 
     return {
       transform: [{ scale }, { translateY }, { translateX: backCardTranslateX }],
