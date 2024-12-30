@@ -9,16 +9,21 @@ import Animated, {
 } from 'react-native-reanimated';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
+type CardType = {
+    name: string,
+    balance: number
+}
 const { width } = Dimensions.get('window');
 const CARD_WIDTH = width * 0.8; // Width of each card
 const CARD_HEIGHT = 200; // Height of each card
 const CARD_SPACING = 10; // Reduced space between cards
-const CARDS = ['Coinbase', 'Metamask', 'Uniswap', 'Bitmap', 'Kraken'];
+const CARDS : CardType[] = [{name:'Coinbase', balance: 50} , {name:'Metamask', balance:20}, {name:"Uniswap", balance:30}, {name:"Bitmap", balance:28}, {name:"Kraken",balance: 34}];
 
 type CardProps = {
   label: string;
   index: number;
   scrollX: Animated.SharedValue<number>;
+  balance: number
 };
 
 const WalletCards: React.FC = () => {
@@ -45,7 +50,7 @@ const WalletCards: React.FC = () => {
           snapToAlignment="center"
         >
           {CARDS.map((card, index) => (
-            <Card key={index} label={card} index={index} scrollX={scrollX} />
+            <Card key={index}  label={card.name} index={index} scrollX={scrollX}  balance = {card.balance}/>
           ))}
         </Animated.ScrollView>
       </View>
@@ -53,7 +58,7 @@ const WalletCards: React.FC = () => {
   );
 };
 
-const Card: React.FC<CardProps> = ({ label, index, scrollX }) => {
+const Card: React.FC<CardProps> = ({ label, index, scrollX, balance }) => {
   const animatedStyle = useAnimatedStyle(() => {
     const offset = index * (CARD_WIDTH + CARD_SPACING);
 
@@ -120,6 +125,7 @@ const Card: React.FC<CardProps> = ({ label, index, scrollX }) => {
   return (
     <Animated.View style={[styles.card, animatedStyle]}>
       <Text style={styles.cardText}>{label}</Text>
+      <Text style={styles.cardText}>${balance}</Text>
     </Animated.View>
   );
 };
