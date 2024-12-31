@@ -1,5 +1,5 @@
 import Color from "react-native-material-color";
-import Coin from "../src/types/Coin"
+import Coin from "../../src/types/Coin"
 
 export const coins: Coin[] = [{
     icon: 'bitcoin',

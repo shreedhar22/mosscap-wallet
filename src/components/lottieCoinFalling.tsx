@@ -7,7 +7,8 @@ import { Audio } from 'expo-av';
 // import Video from 'react-native-video'; // react-natove-video is a native library, it won't run using expo
 // So you will need to run it using IOS prebuild. Follow the steps from here: https://github.com/TheWidlarzGroup/react-native-video/issues/4299#issuecomment-2512171913
 // for IOS builds, follow the steps here: https://docs.expo.dev/build-reference/ios-builds/
-
+// We are using expo-av for sounds to avoid doing the ios-build dance
+ 
 const { width, height } = Dimensions.get('window');
 const CoinRainAnimation: React.FC = () => {
 

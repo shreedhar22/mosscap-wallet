@@ -19,6 +19,11 @@ const RootLayout = ()  => {
             name = "auth"
             options = {{headerShown: false, title:"auth"}}
         />
+
+        <Stack.Screen  
+            name = "transactions"
+            options = {{headerShown: false, title:"transactions"}}
+        />
      </Stack>
     )
 }

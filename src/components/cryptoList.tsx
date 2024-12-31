@@ -3,7 +3,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Coin from "../types/Coin"
 import PriceCard from "./priceCard";
 import { ScrollView } from "react-native";
-import { coins } from "../../assets/coins"
+import { coins } from "../../assets/data/coins"
 
 const CryptoList = () => {
 
