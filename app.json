@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "mosscap-wallet",
+    "scheme": "mosscap-wallet",
     "slug": "mosscap-wallet",
     "version": "1.0.0",
     "orientation": "portrait",
