@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, FlatList } from 'react-native';
 import Transaction from '../../../types/Transactions';
 import { transactions } from "../../../../assets/data/transactions"
 
-const TransactionItem = ({ transaction }: { transaction: any }) => {
+const TransactionItem = ({ transaction }: { transaction: Transaction }) => {
   return (
     <View style={styles.transactionContainer}>
       <View style={styles.leftContainer}>

@@ -18,7 +18,11 @@
 import {Tabs} from  "expo-router"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { StyleSheet } from "react-native"
-
+import FontAwesome5Icon from "react-native-vector-icons/FontAwesome5"
+import FontAwesome from "react-native-vector-icons/FontAwesome"
+import FontAwesome5Brand from "react-native-vector-icons/FontAwesome5"
+import MaterialIcons from "react-native-vector-icons/MaterialIcons"
+import FontAwesome6 from "react-native-vector-icons/FontAwesome6"
 const HomeLayout = () => {
 
     return (
@@ -36,17 +40,17 @@ const HomeLayout = () => {
                     },
                 headerShown: false,}}
             >
-            {/* <Tabs.Screen 
-                name = "transactions"
-                options = {{ headerShown: false, title: "Transactions"}}
-            /> */}
             <Tabs.Screen 
-                name = "profile"
-                options = {{ headerShown: false, title: "Profile"}}
+                name='index'
+                options = {{ headerShown: false, tabBarShowLabel: false,title:"Home", tabBarIcon() {return (<FontAwesome name="home" size={27} color= "#000"/> )}}}
             />
             <Tabs.Screen 
-                name = "transactions"
-                options = {{ headerShown: false, title: "CryptoTransactions"}}
+                name='profile'
+                options = {{ headerShown: false, tabBarShowLabel: false,title: "Profile", tabBarIcon() {return (<MaterialIcons name="payment" size={27} color= "#000"/> )}}}
+            />
+            <Tabs.Screen 
+                name='transactions'
+                options = {{ headerShown: false,tabBarShowLabel: false, title:"CryptoTransactions", tabBarIcon() {return (<FontAwesome6 name="money-bill-transfer" size={27} color= "#000"/>)}}}
             />
             </Tabs>
         </SafeAreaView>
