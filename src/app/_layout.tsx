@@ -1,5 +1,6 @@
 import React from 'react'
 import {Stack} from 'expo-router'
+import AppHeader  from '../components/header'
 
 const RootLayout = ()  => {
   
@@ -7,7 +8,11 @@ const RootLayout = ()  => {
      <Stack>
         <Stack.Screen 
             name = "(home)"
-            options = {{headerShown: false, title:"home"}}
+            options = {{header : (navigation:any, scene:any) => { return (<AppHeader title="Wallets"
+            item={''}
+            navigation={navigation}
+            scene={scene}
+            routeLink= "(home)" />)}, headerShown: true, title:"home"}}
         />
 
         <Stack.Screen  

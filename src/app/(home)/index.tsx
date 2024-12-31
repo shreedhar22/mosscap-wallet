@@ -8,6 +8,8 @@ import Animated, {
   useAnimatedScrollHandler,
 } from 'react-native-reanimated';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import CryptoList from '../../components/cryptoList';
+import CoinRainAnimation from '../../components/lottieCoinFalling';
 
 type CardType = {
     name: string,
@@ -38,6 +40,7 @@ const WalletCards: React.FC = () => {
 
   return (
     <GestureHandlerRootView style={styles.container}>
+      <CoinRainAnimation />
       <View style={styles.carouselWrapper}>
         <Animated.ScrollView
           horizontal
@@ -54,7 +57,13 @@ const WalletCards: React.FC = () => {
           ))}
         </Animated.ScrollView>
       </View>
+      
+
+      <CryptoList/>
+      <CoinRainAnimation />
     </GestureHandlerRootView>
+
+    
   );
 };
 
@@ -97,7 +106,7 @@ const Card: React.FC<CardProps> = ({ label, index, scrollX, balance }) => {
     );
 
     // Define background color (highlighting the selected card)
-    const backgroundColor = isSelected ? '#6200ee' : '#9e77ff'; // Brighter version of the card color for the selected one
+    const backgroundColor = isSelected ? '#3F00FF' : '#2C00B3'; // Brighter version of the card color for the selected one
 
     // Adjust translateX to make sure the cards are stacked behind the selected one
     const translateX = interpolate(
@@ -133,7 +142,7 @@ const Card: React.FC<CardProps> = ({ label, index, scrollX, balance }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#000000',
   },
   carouselWrapper: {
     marginTop: 50, // Position the cards at the top
